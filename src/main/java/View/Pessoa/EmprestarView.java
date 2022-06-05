@@ -8,32 +8,33 @@ import DAO.CaixaDAO;
 import DAO.EmprestimoDAO;
 import DAO.PessoaDAO;
 import DAO.RevistaDAO;
+import Exception.EmprestimoException;
+import Interface.IEmprestimoDAO;
 import Model.Caixa;
 import Model.Emprestimo;
-import Model.Multa;
 import Model.Pessoa;
 import Model.Pessoas.Amigo;
 import Model.Pessoas.Dono;
 import Model.Revista;
-import java.time.Duration;
 import java.time.LocalDate;
-import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author Gabriela
  */
-public class RemoveEmprestimoView extends javax.swing.JFrame {
+public class EmprestarView extends javax.swing.JFrame {
 
     PessoaDAO pessoaDAO = new PessoaDAO();
     RevistaDAO revistaDAO = new RevistaDAO();
-    EmprestimoDAO emprestimoDAO = new EmprestimoDAO();
     CaixaDAO caixaDAO = new CaixaDAO();
+
     /**
-     * Creates new form RemoveEmprestimoView
+     * Creates new form AddEmprestimoPessoa
      */
-    public RemoveEmprestimoView() {
+    public EmprestarView() {
         initComponents();
         preencherComboBox();
     }
@@ -48,8 +49,10 @@ public class RemoveEmprestimoView extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jLData = new javax.swing.JLabel();
+        tfData = new javax.swing.JTextField();
         jAmigo = new javax.swing.JLabel();
-        btDevolver = new java.awt.Button();
+        btAdicionar = new java.awt.Button();
         cbAmigo = new javax.swing.JComboBox<>();
         jLRevista = new javax.swing.JLabel();
         cbRevista = new javax.swing.JComboBox<>();
@@ -58,17 +61,21 @@ public class RemoveEmprestimoView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cadastrar empréstimo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 18))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Emprestar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 18))); // NOI18N
+
+        jLData.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLData.setText("Data:");
+        jLData.setDoubleBuffered(true);
 
         jAmigo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jAmigo.setText("Amigo");
 
-        btDevolver.setActionCommand("Adicionar");
-        btDevolver.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        btDevolver.setLabel("Devolver");
-        btDevolver.addActionListener(new java.awt.event.ActionListener() {
+        btAdicionar.setActionCommand("Adicionar");
+        btAdicionar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btAdicionar.setLabel("Adicionar");
+        btAdicionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btDevolverEmprestimo(evt);
+                btAdicionarEmprestimo(evt);
             }
         });
 
@@ -84,25 +91,35 @@ public class RemoveEmprestimoView extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btDevolver, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLRevista)
-                    .addComponent(jAmigo)
-                    .addComponent(jLabel1))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cbRevista, 0, 333, Short.MAX_VALUE)
-                    .addComponent(cbAmigo, 0, 333, Short.MAX_VALUE)
-                    .addComponent(cbDono, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLData)
+                        .addGap(18, 18, 18)
+                        .addComponent(tfData, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLRevista)
+                            .addComponent(jAmigo)
+                            .addComponent(jLabel1))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cbRevista, 0, 333, Short.MAX_VALUE)
+                            .addComponent(cbAmigo, 0, 333, Short.MAX_VALUE)
+                            .addComponent(cbDono, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(62, Short.MAX_VALUE)
+                .addGap(34, 34, 34)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLData)
+                    .addComponent(tfData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(cbDono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -115,9 +132,11 @@ public class RemoveEmprestimoView extends javax.swing.JFrame {
                     .addComponent(jLRevista)
                     .addComponent(cbRevista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
-                .addComponent(btDevolver, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
+
+        jLRevista.getAccessibleContext().setAccessibleName("jLRevista");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -134,43 +153,10 @@ public class RemoveEmprestimoView extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btDevolverEmprestimo(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDevolverEmprestimo
+    private void btAdicionarEmprestimo(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarEmprestimo
 
-        Dono dono = (Dono) cbDono.getSelectedItem();
-        Amigo amigo = (Amigo) cbAmigo.getSelectedItem();
-        Revista rev = (Revista) cbRevista.getSelectedItem();
-        
-        for (Emprestimo e : emprestimoDAO.recuperarTodosEmprestimos()) {
-            if (e.getRevista().getCodigoDeBarras().equals(rev.getCodigoDeBarras())) {
-                if (verificarDataDevolucao(e)) {
-                    amigo.devolverRevista(rev);
-                    JOptionPane.showMessageDialog(null, "Devolução realizada com sucesso!");
-                    return;
-                } else {
-                    Multa multa = new Multa(1);
-                    amigo.devolverRevista(rev);
-                    JOptionPane.showMessageDialog(null, "Devolução realizada com sucesso! Multa pendente: " + Math.abs(multa.calcularTaxa(subtrairDatas(e))));
-                    return;
-                }
-            }
-        }
-        
-        JOptionPane.showMessageDialog(null, "Emprestimo n encontrado");
-    }//GEN-LAST:event_btDevolverEmprestimo
-
-    private boolean verificarDataDevolucao(Emprestimo e) {
-        LocalDate diaAtual = LocalDate.now();
-
-        return diaAtual.isBefore(e.getDataEntrega());
-    }
-
-    private long subtrairDatas(Emprestimo e) {
-        LocalDate diaAtual = LocalDate.now();
-
-        Period period = Period.between(diaAtual, e.getDataEntrega());
-
-        return period.getDays();
-    }
+        realizarEmprestimo();
+    }//GEN-LAST:event_btAdicionarEmprestimo
 
     private void preencherComboBox() {
         for (Pessoa a : pessoaDAO.recuperarTodasPessoas()) {
@@ -186,15 +172,80 @@ public class RemoveEmprestimoView extends javax.swing.JFrame {
 
     }
 
+    private Emprestimo recuperarEmprestimo() throws EmprestimoException {
+        LocalDate dataHoraEmprestimo = getDataHora();
+        Amigo amigo = (Amigo) cbAmigo.getSelectedItem();
+        Dono dono = (Dono) cbDono.getSelectedItem();
+        Revista revista = (Revista) cbRevista.getSelectedItem();
+        Emprestimo emprestimo = Emprestimo.emprestar(dataHoraEmprestimo, dono, amigo, revista);
+
+        if (amigo == null) {
+            throw new EmprestimoException("Nenhum amigo selecionado");
+        }
+
+        if (dono == null) {
+            throw new EmprestimoException("Nenhum dono selecionado");
+        }
+
+        return emprestimo;
+    }
+
+    private void realizarEmprestimo() {
+
+        try {
+            Revista revista = (Revista) cbRevista.getSelectedItem();
+            Emprestimo emprestimo = recuperarEmprestimo();
+            IEmprestimoDAO emprestimoRepositorio = new EmprestimoDAO();
+            emprestimoRepositorio.adicionarEmprestimo(emprestimo);
+            removerDaCaixa(revista);
+            exibirMensagem("Empréstimo realizado com sucesso: " + emprestimo.toString());
+            limparTela();
+        } catch (EmprestimoException ex) {
+            exibirMensagem("Não foi possível realizar o empréstimo");
+        }
+
+    }
+
+    private void removerDaCaixa(Revista r) {
+        for (Caixa c : caixaDAO.recuperarTodasCaixas()) {
+            if (c.getRevistas().contains(r)) {
+                c.getRevistas().remove(r);
+            }
+            c.reduzirRevistaContador();
+        }
+    }
+
+private void exibirMensagem(String msg) {
+        JOptionPane.showMessageDialog(null, msg);
+    }
+
+    private void limparTela() {
+        tfData.setText("");
+    }
+
+    private LocalDate getDataHora() throws EmprestimoException {
+        String diaMesAno = tfData.getText();
+        String data = diaMesAno;
+
+        try {
+            DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            LocalDate dataEmprestimo = LocalDate.parse(data, formatoData);
+            return dataEmprestimo;
+        } catch (DateTimeParseException e) {
+            throw new EmprestimoException("Data inválida");
+        }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button btAdicionar;
-    private java.awt.Button btDevolver;
     private javax.swing.JComboBox<Pessoa> cbAmigo;
     private javax.swing.JComboBox<Pessoa> cbDono;
     private javax.swing.JComboBox<Revista> cbRevista;
     private javax.swing.JLabel jAmigo;
+    private javax.swing.JLabel jLData;
     private javax.swing.JLabel jLRevista;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField tfData;
     // End of variables declaration//GEN-END:variables
 }

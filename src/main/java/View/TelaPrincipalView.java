@@ -10,10 +10,10 @@ import View.Caixa.BuscarRevistaView;
 import View.Caixa.CaixaCreateView;
 import View.Caixa.CaixaListView;
 import View.Caixa.RemoveRevistaView;
-import View.Pessoa.AddEmprestimoPessoa;
+import View.Pessoa.EmprestarView;
 import View.Pessoa.PessoaCreateView;
 import View.Pessoa.PessoaListView;
-import View.Pessoa.RemoveEmprestimoView;
+import View.Pessoa.DevolverView;
 import View.Revista.RevistaCreateView;
 import View.Revista.RevistaListView;
 
@@ -216,13 +216,13 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_miCriarPessoaActionPerformed
 
     private void miEmprestarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miEmprestarActionPerformed
-        AddEmprestimoPessoa aep = new AddEmprestimoPessoa();
+        EmprestarView aep = new EmprestarView();
         
         aep.setVisible(true);
     }//GEN-LAST:event_miEmprestarActionPerformed
 
     private void miDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miDevolverActionPerformed
-        RemoveEmprestimoView rev = new RemoveEmprestimoView();
+        DevolverView rev = new DevolverView();
         
         rev.setVisible(true);
     }//GEN-LAST:event_miDevolverActionPerformed
