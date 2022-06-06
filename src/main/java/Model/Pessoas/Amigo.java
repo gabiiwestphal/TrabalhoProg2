@@ -34,6 +34,6 @@ public class Amigo extends Pessoa {
     
     @Override
     public String toString() {
-        return "Tipo: Amigo " + super.toString();
+        return "Amigo " + super.toString();
     }
 }

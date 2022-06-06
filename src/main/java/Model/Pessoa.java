@@ -95,7 +95,8 @@ public abstract class Pessoa
 
     @Override
     public String toString() {
-        return "ID: " + identificador + ", nome=" + nome + ", cpf: " + cpf + ", endereco=" + endereco + ", telefone=" + telefone;
+        return "ID: " + identificador + ", nome:" + nome + ", cpf: " + cpf + 
+                ", endereco:" + endereco + ", telefone:" + telefone;
     }    
 }
 

@@ -14,6 +14,6 @@ public class Dono extends Pessoa {
     
     @Override
     public String toString() {
-        return "Tipo: Dono " + super.toString();
+        return "Dono " + super.toString();
     }
 }

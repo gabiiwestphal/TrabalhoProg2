@@ -84,6 +84,6 @@ public class Emprestimo
 
     @Override
     public String toString() {
-        return "data=" + getDataFormatada() + ", dono=" + dono + ", amigo=" + amigo;
+        return "data:" + getDataFormatada() + ", dono:" + dono + ", amigo:" + amigo;
     }
 }

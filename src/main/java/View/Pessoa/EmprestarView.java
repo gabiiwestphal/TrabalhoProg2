@@ -107,10 +107,10 @@ public class EmprestarView extends javax.swing.JFrame {
                             .addComponent(jLabel1))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cbRevista, 0, 333, Short.MAX_VALUE)
-                            .addComponent(cbAmigo, 0, 333, Short.MAX_VALUE)
+                            .addComponent(cbRevista, 0, 389, Short.MAX_VALUE)
+                            .addComponent(cbAmigo, 0, 389, Short.MAX_VALUE)
                             .addComponent(cbDono, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
