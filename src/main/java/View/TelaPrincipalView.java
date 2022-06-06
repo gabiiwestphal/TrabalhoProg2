@@ -47,7 +47,9 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         mnCaixa.setText("Caixa");
+        mnCaixa.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
+        miCriarCaixa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         miCriarCaixa.setText("Criar");
         miCriarCaixa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -56,6 +58,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         });
         mnCaixa.add(miCriarCaixa);
 
+        miListarCaixas.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         miListarCaixas.setText("Listar Caixas");
         miListarCaixas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,6 +67,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         });
         mnCaixa.add(miListarCaixas);
 
+        miAddRevista.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         miAddRevista.setText("Adicionar Revista");
         miAddRevista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,6 +76,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         });
         mnCaixa.add(miAddRevista);
 
+        miBuscarRevista.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         miBuscarRevista.setText("Buscar Revista");
         miBuscarRevista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,6 +85,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         });
         mnCaixa.add(miBuscarRevista);
 
+        miRemoverRevista.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         miRemoverRevista.setText("Remover Revista da Caixa");
         miRemoverRevista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,7 +97,9 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         Pessoa.add(mnCaixa);
 
         mnRevista.setText("Revista");
+        mnRevista.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
+        miCriarRevista.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         miCriarRevista.setText("Criar");
         miCriarRevista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,6 +108,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         });
         mnRevista.add(miCriarRevista);
 
+        miListarRevistas.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         miListarRevistas.setText("Listar revistas");
         miListarRevistas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,7 +120,9 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         Pessoa.add(mnRevista);
 
         mnPessoa.setText("Pessoa");
+        mnPessoa.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
+        miCriarPessoa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         miCriarPessoa.setText("Criar pessoa");
         miCriarPessoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,6 +131,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         });
         mnPessoa.add(miCriarPessoa);
 
+        miListarPessoa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         miListarPessoa.setText("Listar Pessoas");
         miListarPessoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,7 +143,9 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         Pessoa.add(mnPessoa);
 
         mnEmprestimo.setText("Empréstimo");
+        mnEmprestimo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
+        miEmprestar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         miEmprestar.setText("Emprestar");
         miEmprestar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,6 +154,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         });
         mnEmprestimo.add(miEmprestar);
 
+        miDevolver.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         miDevolver.setText("Devolver");
         miDevolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -156,11 +171,11 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 519, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 277, Short.MAX_VALUE)
+            .addGap(0, 309, Short.MAX_VALUE)
         );
 
         pack();
