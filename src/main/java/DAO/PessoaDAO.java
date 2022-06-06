@@ -9,10 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import Interface.IPessoaDAO;
 
-/**
- *
- * @author Gabriela
- */
 public class PessoaDAO implements IPessoaDAO {
     
     public static List<Pessoa> pessoas = new ArrayList<>();
@@ -24,12 +20,11 @@ public class PessoaDAO implements IPessoaDAO {
 
     @Override
     public Pessoa recuperarPessoa() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("");
     }
 
     @Override
     public List<Pessoa> recuperarTodasPessoas() {
         return pessoas;
     }
-   
 }

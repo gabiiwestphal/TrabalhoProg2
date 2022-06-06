@@ -10,10 +10,6 @@ import Model.Emprestimo;
 import Model.Pessoa;
 import Model.Revista;
 
-/**
- *
- * @author Gabriela
- */
 public class Amigo extends Pessoa {
     
     public Amigo() {

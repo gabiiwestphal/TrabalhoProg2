@@ -7,10 +7,6 @@ package Interface;
 import Model.Revista;
 import java.util.List;
 
-/**
- *
- * @author Gabriela
- */
 public interface IRevistaDAO {
     
     public void adicionarRevista(Revista a);

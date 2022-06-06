@@ -10,10 +10,6 @@ import Model.Pessoas.Dono;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-/**
- *
- * @author Gabriela
- */
 public class Emprestimo 
 {
     private LocalDate dataEmprestimo;
@@ -64,7 +60,6 @@ public class Emprestimo
         return multa;
     }
  
-
     public Dono getDono() {
         return dono;
     }
@@ -91,13 +86,4 @@ public class Emprestimo
     public String toString() {
         return "data=" + getDataFormatada() + ", dono=" + dono + ", amigo=" + amigo;
     }
-
-//    @Override
-//    public int compareTo(Consulta c) {
-//        if(this.dataHora.isAfter(c.getDataHora()))
-//            return 1;
-//        else
-//            return -1;
-//    }
-    
 }

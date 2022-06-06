@@ -5,16 +5,10 @@
 package DAO;
 
 import Interface.IRevistaDAO;
-import Model.Pessoa;
 import Model.Revista;
 import java.util.ArrayList;
 import java.util.List;
-import Interface.IPessoaDAO;
 
-/**
- *
- * @author Gabriela
- */
 public class RevistaDAO implements IRevistaDAO {
     
     public static List<Revista> revistas = new ArrayList<>();
@@ -26,14 +20,11 @@ public class RevistaDAO implements IRevistaDAO {
 
     @Override
     public Revista recuperarRevista() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException(""); 
     }
 
     @Override
     public List<Revista> recuperarTodasRevistas() {
         return revistas;
     }
-
-
-   
 }

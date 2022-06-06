@@ -7,15 +7,9 @@ package Model;
 import DAO.PessoaDAO;
 import Exception.CampoVazioException;
 import Exception.CpfExistenteException;
-import Model.Emprestimo;
 import java.util.ArrayList;
 import java.util.List;
 
-
-/**
- *
- * @author Gabriela
- */
 public abstract class Pessoa 
 {
     protected String nome;
@@ -99,13 +93,9 @@ public abstract class Pessoa
         this.telefone = telefone;
     }
 
-
     @Override
     public String toString() {
         return "ID: " + identificador + ", nome=" + nome + ", cpf: " + cpf + ", endereco=" + endereco + ", telefone=" + telefone;
-    }
-
-    
-    
+    }    
 }
 

@@ -4,10 +4,6 @@
  */
 package Exception;
 
-/**
- *
- * @author Gabriela
- */
 public class CpfExistenteException extends Exception {
     
     public CpfExistenteException(){

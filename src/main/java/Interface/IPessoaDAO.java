@@ -7,10 +7,6 @@ package Interface;
 import Model.Pessoa;
 import java.util.List;
 
-/**
- *
- * @author Gabriela
- */
 public interface IPessoaDAO {
     
     public void adicionarPessoa(Pessoa a);

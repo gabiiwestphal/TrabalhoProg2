@@ -4,10 +4,6 @@
  */
 package Exception;
 
-/**
- *
- * @author Gabriela
- */
 public class CampoVazioException extends Exception {
     
     public CampoVazioException() {

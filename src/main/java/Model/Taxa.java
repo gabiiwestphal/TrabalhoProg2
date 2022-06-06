@@ -4,7 +4,6 @@
  */
 package Model;
 
-
 public interface Taxa {
     public double calcularTaxa(long dias);
 }

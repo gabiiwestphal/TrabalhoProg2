@@ -7,10 +7,6 @@ package Interface;
 import Model.Caixa;
 import java.util.List;
 
-/**
- *
- * @author Gabriela
- */
 public interface ICaixaDAO {
     public void adicionarCaixa(Caixa a);
     public Caixa recuperarCaixa();

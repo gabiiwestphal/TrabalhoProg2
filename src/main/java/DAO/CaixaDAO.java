@@ -9,10 +9,6 @@ import Model.Caixa;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Gabriela
- */
 public class CaixaDAO implements ICaixaDAO {
     
     public static List<Caixa> caixas = new ArrayList<>();
@@ -24,13 +20,11 @@ public class CaixaDAO implements ICaixaDAO {
 
     @Override
     public Caixa recuperarCaixa() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException(""); 
     }
 
     @Override
     public List<Caixa> recuperarTodasCaixas() {
         return caixas;
-    }
-
-    
+    }   
 }

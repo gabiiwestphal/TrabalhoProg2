@@ -10,11 +10,6 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-
-/**
- *
- * @author Gabriela
- */
 public class Caixa implements Comparable<Caixa> {
     private String cor;
     private int qtdRevistas;
@@ -100,6 +95,5 @@ public class Caixa implements Comparable<Caixa> {
         } else {
             return 0;
         }
-    }
-    
+    }  
 }

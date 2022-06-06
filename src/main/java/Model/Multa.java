@@ -4,10 +4,6 @@
  */
 package Model;
 
-/**
- *
- * @author Gabriela
- */
 public class Multa implements Taxa {
    
    private int valor;
@@ -27,6 +23,5 @@ public class Multa implements Taxa {
     @Override
     public double calcularTaxa(long dias) {
         return this.valor * dias;
-    }
-    
+    }   
 }

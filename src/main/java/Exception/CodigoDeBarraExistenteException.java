@@ -4,10 +4,6 @@
  */
 package Exception;
 
-/**
- *
- * @author Gabriela
- */
 public class CodigoDeBarraExistenteException extends Exception {
     
     public CodigoDeBarraExistenteException() {

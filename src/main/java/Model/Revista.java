@@ -8,10 +8,6 @@ import DAO.RevistaDAO;
 import Exception.CampoVazioException;
 import Exception.CodigoDeBarraExistenteException;
 
-/**
- *
- * @author Gabriela
- */
 public class Revista{
     
     private String nome;
@@ -60,9 +56,7 @@ public class Revista{
 
     public void setCaixa(Caixa caixa) {
         this.caixa = caixa;
-    }
-    
-    
+    }   
     
     public String getCodigoDeBarras() {
         return codigoDeBarras;
@@ -119,5 +113,4 @@ public class Revista{
         return "Nome: " + nome + ", Ano: " + ano + ", Coleção: " + colecao
                 + ", Edição: " + edicao + "Categoria: " + categoria + ", Código: " + codigoDeBarras;
     }
-
 }
