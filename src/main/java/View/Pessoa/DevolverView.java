@@ -8,7 +8,6 @@ import DAO.CaixaDAO;
 import DAO.EmprestimoDAO;
 import DAO.PessoaDAO;
 import DAO.RevistaDAO;
-import Model.Caixa;
 import Model.Emprestimo;
 import Model.Multa;
 import Model.Pessoa;
